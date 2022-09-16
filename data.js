@@ -29,14 +29,12 @@ async function updateTableware(id, tableware) {
 }
 
 // Delete tableware
-
 async function deleteTableware(id) {
   const res = await pool.query("delete from tableware where id = $1", [id]);
   return res.rows;
 }
 
 // Create office
-
 async function createOffice(office) {
   await pool.query(
     "insert into office (name, location, starting_year) values ($1, $2, $3);",
@@ -58,6 +56,20 @@ async function readAllOffices() {
   return res.rows;
 }
 
+// Update item on office
+async function updateOffice(id, office) {
+  await pool.query(
+    "update office set name = $2, location = $3, starting_year= $4 where id = $1",
+    [id, office.name, office.location, office.starting_year]
+  );
+}
+
+// Delete item from office
+async function deleteOffice(id) {
+  const res = await pool.query("delete from office where id = $1", [id]);
+  return res.rows;
+}
+
 module.exports = {
   createTableware,
   readTableware,
@@ -67,6 +79,6 @@ module.exports = {
   createOffice,
   readOffice,
   readAllOffices,
-  //   updateOffice,
-  //   deleteOffice,
+  updateOffice,
+  deleteOffice,
 };
