@@ -3,7 +3,17 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const { createTableware, readTableware, readAllTableware } = require("./data");
+const {
+  createTableware,
+  readTableware,
+  readAllTableware,
+  updateTableware,
+  deleteTableware,
+  createOffice,
+  //   readOffice,
+  //   updateOffice,
+  //   deleteOffice,
+} = require("./data");
 app.use(cors());
 app.use(express.json());
 
@@ -27,6 +37,28 @@ app.post("/api/tableware", async (req, res) => {
   res.sendStatus(200);
 });
 
+// Update tableware
+app.put("api/tableware/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Update tableware at /api/tableware/id");
+  await updateTableware(id, req.body);
+  res.sendStatus(200);
+});
+
+// Delete tableware
+app.delete("api/tableware/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Deleted item at api/tableware");
+  await deleteTableware(id);
+  res.sendStatus(200);
+});
+
+// Create office
+app.post("/api/office", async (req, res) => {
+  console.log("Create new office at /api/office");
+  await createOffice(req.body);
+  res.sendStatus(200);
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
