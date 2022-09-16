@@ -1,0 +1,23 @@
+{
+  "name": "checkpoint4",
+  "version": "1.0.0",
+  "description": "Checkpoint 4 tasks",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sallakontio/checkpoint4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sallakontio/checkpoint4/issues"
+  },
+  "homepage": "https://github.com/sallakontio/checkpoint4#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "pg": "^8.8.0"
+  }
+}
