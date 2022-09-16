@@ -14,6 +14,7 @@ const {
   readAllOffices,
   updateOffice,
   deleteOffice,
+  tablewareByOffice,
 } = require("./data");
 app.use(cors());
 app.use(express.json());
@@ -88,6 +89,12 @@ app.delete("/api/office/:id", async (req, res) => {
   console.log("Deleted office at /api/office/id");
   await deleteOffice(id);
   res.sendStatus(200);
+});
+
+// Read all tableware by office
+app.get("/api/all/", async (req, res) => {
+  console.log("Reading tableware by office at /api/tableware/office");
+  return res.json(await tablewareByOffice());
 });
 
 app.listen(port, () => {

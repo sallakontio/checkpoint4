@@ -70,6 +70,14 @@ async function deleteOffice(id) {
   return res.rows;
 }
 
+// Read all tableware by office
+async function tablewareByOffice() {
+  const res = await pool.query(
+    "select office.location, tableware.name from office full outer join tableware on office.id = tableware.office_id"
+  );
+  return res.rows;
+}
+
 module.exports = {
   createTableware,
   readTableware,
@@ -81,4 +89,5 @@ module.exports = {
   readAllOffices,
   updateOffice,
   deleteOffice,
+  tablewareByOffice,
 };
