@@ -31,7 +31,7 @@ async function updateTableware(id, tableware) {
 // Delete tableware
 
 async function deleteTableware(id) {
-  const res = await pool.query("delete from person where id = $1", [id]);
+  const res = await pool.query("delete from tableware where id = $1", [id]);
   return res.rows;
 }
 

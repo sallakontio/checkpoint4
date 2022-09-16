@@ -39,7 +39,7 @@ app.post("/api/tableware", async (req, res) => {
 });
 
 // Update tableware
-app.put("api/tableware/:id", async (req, res) => {
+app.put("/api/tableware/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Update tableware at /api/tableware/id");
   await updateTableware(id, req.body);
@@ -47,7 +47,7 @@ app.put("api/tableware/:id", async (req, res) => {
 });
 
 // Delete tableware
-app.delete("api/tableware/:id", async (req, res) => {
+app.delete("/api/tableware/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Deleted item at api/tableware");
   await deleteTableware(id);
