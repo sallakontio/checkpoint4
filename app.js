@@ -10,7 +10,8 @@ const {
   updateTableware,
   deleteTableware,
   createOffice,
-  //   readOffice,
+  readOffice,
+  readAllOffices,
   //   updateOffice,
   //   deleteOffice,
 } = require("./data");
@@ -61,4 +62,17 @@ app.post("/api/office", async (req, res) => {
 });
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
+});
+
+// Read office by ID
+app.get("/api/office/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Reading office at /api/office/");
+  return res.json(await readOffice(id));
+});
+
+// Read all offices
+app.get("/api/office", async (req, res) => {
+  console.log("Reading all offices at /api/office/");
+  return res.json(await readAllOffices());
 });
