@@ -3,14 +3,21 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const { createTableware, readTableware } = require("./data");
+const { createTableware, readTableware, readAllTableware } = require("./data");
 app.use(cors());
 app.use(express.json());
 
-// Read tableware
-app.get("/api/tableware", async (req, res) => {
+// Read tableware by object id
+app.get("/api/tableware/:id", async (req, res) => {
+  const id = req.params.id;
   console.log("Reading tableware at /api/tableware/");
-  return res.json(await readTableware());
+  return res.json(await readTableware(id));
+});
+
+// Read all objects
+app.get("/api/tableware", async (req, res) => {
+  console.log("Reading all tableware at /api/tableware/");
+  return res.json(await readAllTableware());
 });
 
 // Create tableware
